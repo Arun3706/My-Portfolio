@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Pal - IT Services Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- three.js for 3D animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Typed.js for typing animation -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3/src/index.js"></script>
+
+    <style>
+        /* Custom styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevents horizontal scroll */
+        }
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content-section {
+            position: relative;
+            z-index: 1;
+        }
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+        /* Reveal on scroll animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Floating Header -->
+    <nav id="floating-nav" class="glass-card fixed top-4 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible scale-95">
+        <div class="flex items-center justify-center space-x-6">
+            <a href="#hero" class="text-gray-300 hover:text-white transition">Home</a>
+            <a href="#services" class="text-gray-300 hover:text-white transition">Services</a>
+            <a href="#process" class="text-gray-300 hover:text-white transition">Process</a>
+            <a href="#contact" class="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-5 rounded-full transition">Send Enquiry</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header/Hero Section -->
+        <header id="hero" class="content-section min-h-screen flex flex-col justify-center items-center text-center">
+            <div class="max-w-4xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+                    We Build <span id="typed-services" class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500"></span>
+                </h1>
+                <p class="mt-6 text-lg sm:text-xl text-gray-300">
+                    Crafting high-performance websites and integrating seamless payment gateways to elevate your business.
+                </p>
+                <a href="#contact" class="mt-8 inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform transform hover:scale-105">Get a Free Quote</a>
+            </div>
+        </header>
+
+        <!-- Services Section -->
+        <section id="services" class="content-section py-20 lg:py-32">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Our Services</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">From simple landing pages to complex e-commerce platforms, we've got you covered.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Cards with reveal animation -->
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/20 reveal">
+                    <h3 class="text-2xl font-semibold text-white">Static Websites</h3>
+                    <p class="mt-4 text-gray-300">Blazing fast, secure, and reliable websites perfect for portfolios, brochures, and landing pages.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/20 reveal" style="transition-delay: 100ms;">
+                    <h3 class="text-2xl font-semibold text-white">Dynamic Websites</h3>
+                    <p class="mt-4 text-gray-300">Engaging, data-driven websites with content management systems (CMS) for easy updates.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/20 reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-2xl font-semibold text-white">WordPress Development</h3>
+                    <p class="mt-4 text-gray-300">Custom themes and plugins for the world's most popular CMS, tailored to your specific needs.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/20 reveal" style="transition-delay: 0ms;">
+                    <h3 class="text-2xl font-semibold text-white">Shopify Stores</h3>
+                    <p class="mt-4 text-gray-300">Beautiful and powerful e-commerce stores on the Shopify platform to sell your products online.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl md:col-span-2 lg:col-span-1 transition-all duration-300 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/20 reveal" style="transition-delay: 100ms;">
+                    <h3 class="text-2xl font-semibold text-white">Payment Gateways</h3>
+                    <p class="mt-4 text-gray-300">Secure integration of popular payment providers like PhonePe, PayPal, Razorpay, and more.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/20 reveal" style="transition-delay: 200ms;">
+                    <h3 class="text-2xl font-semibold text-white">Custom Solutions</h3>
+                    <p class="mt-4 text-gray-300">Have a unique idea? We build custom web applications to solve your specific business challenges.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Our Process Section -->
+        <section id="process" class="content-section py-20 lg:py-32">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Our Simple 4-Step Process</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">We follow a clear and collaborative process to ensure your project's success from start to finish.</p>
+            </div>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <!-- Step 1 -->
+                <div class="reveal" style="transition-delay: 0ms;">
+                    <div class="bg-gray-800 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 border-2 border-indigo-500">
+                        <i class="ph-magnifying-glass text-indigo-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">1. Discovery</h3>
+                    <p class="mt-2 text-gray-400">We listen to your ideas and requirements to understand your goals.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="bg-gray-800 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 border-2 border-indigo-500">
+                         <i class="ph-paint-brush text-indigo-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">2. Design</h3>
+                    <p class="mt-2 text-gray-400">We create a stunning, user-friendly design mock-up for your approval.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="bg-gray-800 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 border-2 border-indigo-500">
+                        <i class="ph-code text-indigo-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">3. Development</h3>
+                    <p class="mt-2 text-gray-400">Our expert developers bring the design to life with clean, efficient code.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="reveal" style="transition-delay: 300ms;">
+                    <div class="bg-gray-800 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 border-2 border-indigo-500">
+                         <i class="ph-rocket-launch text-indigo-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">4. Launch</h3>
+                    <p class="mt-2 text-gray-400">We deploy your project to the web and provide ongoing support.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact/Enquiry Section -->
+        <section id="contact" class="content-section py-20 lg:py-32">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Service Enquiry</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Let's build something amazing together. Fill out the form below to get started.</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto reveal">
+                <form id="enquiry-form" class="glass-card p-8 rounded-2xl space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300">Full Name</label>
+                        <input type="text" name="name" id="name" required class="mt-1 block w-full bg-white/10 border-transparent rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300">Email Address</label>
+                        <input type="email" name="email" id="email" required class="mt-1 block w-full bg-white/10 border-transparent rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="service" class="block text-sm font-medium text-gray-300">Service of Interest</label>
+                        <select id="service" name="service" required class="mt-1 block w-full bg-gray-800 border-transparent rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option>Static Website</option>
+                            <option>Dynamic Website</option>
+                            <option>WordPress Website</option>
+                            <option>Shopify Website</option>
+                            <option>Payment Gateway Integration</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-white/10 border-transparent rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" id="submit-button" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                            Send Enquiry
+                        </button>
+                    </div>
+                </form>
+                <!-- Form status message -->
+                <div id="form-status" class="mt-6 text-center text-lg"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="content-section text-center py-8">
+            <p class="text-gray-500">&copy; <span id="year"></span> Arun Pal. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- NEW: Typed.js Initialization ---
+        var typed = new Typed('#typed-services', {
+            strings: ['Websites.', 'Shopify Stores.', 'WordPress Sites.', 'Payment Gateways.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+
+        // --- NEW: Floating Nav & Reveal on Scroll ---
+        const floatingNav = document.getElementById('floating-nav');
+        const heroSection = document.getElementById('hero');
+        
+        // Function to handle nav visibility
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    floatingNav.classList.add('opacity-100', 'visible', 'scale-100');
+                    floatingNav.classList.remove('opacity-0', 'invisible', 'scale-95');
+                } else {
+                    floatingNav.classList.remove('opacity-100', 'visible', 'scale-100');
+                    floatingNav.classList.add('opacity-0', 'invisible', 'scale-95');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        navObserver.observe(heroSection);
+
+        // Function for reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Optional: stop observing once revealed
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+
+        // --- 3D Background Animation (No changes) ---
+        let scene, camera, renderer, stars;
+
+        function init3D() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.z = 1;
+            camera.rotation.x = Math.PI / 2;
+            const canvas = document.getElementById('bg-canvas');
+            renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            const starGeometry = new THREE.BufferGeometry();
+            const starCount = 5000;
+            const positions = new Float32Array(starCount * 3);
+            for (let i = 0; i < starCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 800;
+            }
+            starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const starMaterial = new THREE.PointsMaterial({ color: 0xaaaaaa, size: 0.7 });
+            stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+            window.addEventListener('resize', onWindowResize, false);
+            animate();
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            stars.position.z += 0.2;
+            if (stars.position.z > camera.position.z + 200) {
+                 stars.position.z = -600;
+            }
+            if (camera) {
+                camera.position.x += (mouseX - window.innerWidth / 2) * 0.00001 - camera.position.x * 0.01;
+                camera.position.y += -(mouseY - window.innerHeight / 2) * 0.00001 - camera.position.y * 0.01;
+            }
+            renderer.render(scene, camera);
+        }
+        init3D();
+
+        // --- Google Sheet Form Submission (No changes) ---
+        const form = document.getElementById('enquiry-form');
+        const submitButton = document.getElementById('submit-button');
+        const formStatus = document.getElementById('form-status');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwAjO1770O3I--OL6rhQoJb2cyv5ak9e8vqptnPN5mORARZOSZe4ZAnuzR9HkeH9yEJdg/exec'; 
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            formStatus.textContent = '';
+            fetch(scriptURL, { method: 'POST', mode: 'cors', body: new FormData(form)})
+            .then(response => {
+                if (response.ok) return response.json();
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            })
+            .then(data => {
+                if (data.result === 'success') {
+                    formStatus.textContent = 'Thank you! Your enquiry has been sent.';
+                    formStatus.className = 'text-green-400';
+                    form.reset();
+                } else {
+                    throw new Error(data.error || 'Server-side error.');
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                formStatus.textContent = 'Oops! An error occurred. Please try again.';
+                formStatus.className = 'text-red-400';
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Enquiry';
+            });
+        });
+
+    </script>
+</body>
+</html>
